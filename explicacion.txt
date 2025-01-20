@@ -1,0 +1,195 @@
+
+https://www.youtube.com/watch?v=oF3XmiHgT-I&t=503s
+1:04:09
+
+1. 
+
+  1 forma ========================= en este proyecto usamos esto 
+  inicio >
+  abre spring > file > new > other > wizards escribe spring > selecciona spring starter proyect > next
+   > saldra una ventana que dice new spring starter proyect > en el name pon el nombre de tu proyecto
+        pon las siguientes opciones : 
+       type: maven 
+       java version : preferencial 
+       packing: jar 
+       languaje:java
+      group : name de tu paquete (ejemplo : com.gestion.empleados)
+              recordar que los demas paquetes deben seguri esta estructura ejemplo: com.gestion.empleados.controller ,etc
+      artifact : gestion-empleados
+       description : poner 
+       next : al final
+   > sale una nueva ventana 
+     en el input busca osea en available , son dependencias
+        >  spring boot dev tools 
+        > spring data jpa 
+        > mysql driver 
+        > spring web
+        > dar finish
+
+   2 forma ========================= RECOMENDADA 
+    > abre spring > new > spring starter proyect > en el name pon el nombre de tu proyecto
+       type: maven 
+       java version : preferencial 
+       packing: war
+       languaje:java
+      group : name de tu paquete (ejemplo : com.gestion.empleados)
+       recordar que los demas paquetes deben seguri esta estructura ejemplo: com.gestion.empleados.controller ,etc
+      artifact : gestionEmpleados
+       description : poner 
+       next : al final
+    > sale una nueva ventana 
+         new spring starter proyect
+         no selecciones nada de dependencias pq usamos maven 
+         next 
+         finish
+         
+         
+       ojo : si despues de crear el proyecto nesecitas agregar dependencias entonces 
+           dirigite al https://mvnrepository.com/ , busca tu paquete y pegalo en el pom.xml   
+         
+         
+         
+         
+  > 1.2
+  agregamos esto  en el pom.xml para el uso del thymeleaf
+   <!-- https://mvnrepository.com/artifact/org.thymeleaf/thymeleaf -->
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-thymeleaf</artifactId>
+</dependency>       
+         
+         
+         
+         
+         
+         
+ 2. 
+    creando la bd         
+    entra a mysql > 
+      
+      ejecuta este codigo o si no puede crear x medio de la interfaz 
+      create database control_empleados;
+
+      use control_empleados;
+    
+    
+    
+    
+    
+    
+  3.     
+  
+  src/main/resources/ aplicattion.properties 
+   
+   //todo esto para la bd  , la bd esta en el mismo servidor donde corre la aplicacion
+//   jdbc:mysql: Es el protocolo que define que se trata de una conexión a una base de datos MySQL.
+spring.datasource.url=jdbc:mysql://localhost/control_empleados
+//credenciales de la bd
+spring.datasource.username=root
+spring.datasource.password==1977
+//name del proyecot
+spring.application.name=gestionEmpleados
+
+//El dialecto le dice a Hibernate cómo generar las consultas SQL específicas para el tipo de base de datos que estás usando. En este caso:
+//Esto ayuda a Hibernate a traducir las consultas de una manera óptima para MySQL, aprovechando las características del motor de almacenamiento InnoDB 
+//(como soporte de transacciones).
+//Propósito: Define la estrategia de generación de la base de datos por parte de Hibernate.
+//Explicación: Este ajuste le indica a Hibernate cómo manejar las tablas y las estructuras de la base de datos cuando la aplicación se ejecuta:
+//update: Hibernate intentará actualizar automáticamente la estructura de la base de datos para que coincida con las entidades definidas en el código de la aplicación sin perder datos.
+//Otros valores posibles son:
+//create: Crea la base de datos cada vez que se ejecuta la aplicación (borra y vuelve a crear las tablas, eliminando todos los datos).
+//create-drop: Similar a create, pero también elimina las tablas cuando la aplicación se detiene.
+//none: No realiza ningún cambio en la base de datos (usa la estructura existente sin modificaciones).
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MYSQL5InnoDBDialect
+spring.jpa.hibernate.ddl-auto=update
+   
+   
+   
+   resumen =====================================: 
+   
+   //conexion base de datos
+   spring.datasource.url=jdbc:mysql://localhost/control_empleados
+spring.datasource.username=root
+spring.datasource.password==1977
+ //proyecto
+spring.application.name=gestionEmpleados
+
+//dialecto bd
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MYSQL5InnoDBDialect
+//la primera operacion al inicial el proyecto sera crear la bd
+spring.jpa.hibernate.ddl-auto=create
+   
+   //para ver en consola las operaciones de sql
+   spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
+ 
+ //cambiando de puerto
+ esto solo es opcional 
+server.port=8090
+
+
+
+
+
+   
+    
+4. 
+  creacion package > src/main/java 
+    > click derecho > new > package > name(com.gestion.empleados.modelo)
+       > crear una clase : poner name y ok
+       
+    > click derecho > new > package > name(com.gestion.empleados.servicio)
+       > crear una interface : poner name y ok
+       > crear una clase : nombre EstudianteServicioImpl   
+       
+    > click derecho > new > package > name(com.gestion.empleados.repository)
+       > crear una interface : pone name y ok EstudianteRepositorio
+    
+    > click derecho > new > package > name(com.gestion.empleados.controlador)
+       > crear una clase :name  EstudianteControlador
+    
+    
+    recordar ojo : tu paquete principal el q corre al aplicacion es el com.gestion.empleados los demas paquetes deben seguir la estructura
+    
+    
+    
+    
+    
+    
+    5. 
+    Estructura del front
+      recordar el modelo MVC : modelo vista controlador , osea juntamos el back el front en uno solo
+    > src/main/resources > templates
+      click derecho > new > other  > HTMLfile
+       en caso no salga descargar extension de spring su tienda el Thymeleaf  u otro html q quiras usar.
+   
+
+    
+    
+    
+    
+    
+    
+    6.
+     recordar si haces cambios en el pom.xm 
+     En Eclipse: Haz clic derecho en el proyecto, selecciona Maven > Update Project.
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
