@@ -3,7 +3,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Registro de Estudiantes</title>
+<title>Editar de Estudiantes</title>
 
 <!-- agregando boostrap > via cdn > -->
 <!-- si nesecitas modales recomendable instalar npm  -->
@@ -34,17 +34,18 @@
 		<div class="row">
 			<div
 				class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
-				<h1 class="text-center">Registro de Estudiantes</h1>
+				<h1 class="text-center">Edición de Estudiantes</h1>
 				<div class="card-body">
-<!-- 				th:action="@{/estudiantes}": aqui se redirecciona al momento de dar post , llama al CONTROLLER AGREGAR ESTUDIANTE-->
-<!--               th:object="${estudiante}" : estudiante es la variable que recibe del controller objeto guia , 
-                   cuando el formulario envia la data envia este objeto estuidante al controller o metodo guardar estudiante-->
-					
-					<form th:action="@{/estudiantes}" th:object="${estudiante}"
-					method="POST">
+				
+<!-- 				th:object="${estudiante}" : el objeto o variable  obtenido del CONTROLLER GET ONE ESTUDIANTE POR ID -->
+<!-- 					th:action="@{/estudiantes/{id}(id=${estudiante.id})}"  : metodo controller para el CONTROLLER ACTUALIZA UN ESTUDIANTE
+                         estudiante.id : del objeto th:object="${estudiante} le envia su id  -->
+					<form th:action="@{/estudiantes/{id}(id=${estudiante.id})}" th:object="${estudiante}"
+					 method="POST">
 					<div class="form-group">
 					 <label> nombre :</label>
-<!-- 					 th:field="*{nombre}" : relaciona los atributos iguales al objeto estudiante , su clase modelo-->
+<!-- 					 th:field="*{nombre}" : relaciona los atributos iguales al objeto estudiante , su clase modelo
+                        con estos atributos se llenaran los campos al actualizar , osea al llenar-->
 					 <input type="text" name="nombre" th:field="*{nombre}" class="form-control"
 					 placeholder="Digite su Nombre :" required>
 					</div>

@@ -71,6 +71,8 @@ https://www.youtube.com/watch?v=oF3XmiHgT-I&t=503s
       create database control_empleados;
 
       use control_empleados;
+      
+      > luego con los controller auto se agregaran las tablas y los datos
     
     
     
